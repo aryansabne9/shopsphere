@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
+import { fileURLToPath } from 'node:url';
 import { connectDatabase } from './server/config/db.js';
 import authRoutes from './server/routes/auth.js';
 import productRoutes from './server/routes/products.js';
@@ -25,7 +26,8 @@ app.use('/api/cart', cartRoutes);
 app.use('/api/wishlist', wishlistRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/admin', adminRoutes);
-app.use((_req, res) => res.status(404).json({ message: 'Route not found.' }));
+app.use('/api', (_req, res) => res.status(404).json({ message: 'Route not found.' }));
+app.get('*', (_req, res) => res.sendFile(fileURLToPath(new URL('./public/index.html', import.meta.url))));
 app.use((error, _req, res, _next) => {
   if (error.code === 11000) return res.status(409).json({ message: 'That email or product slug already exists.' });
   if (error.status) return res.status(error.status).json({ message: error.message });
