@@ -1,0 +1,13 @@
+{
+  "name": "shopsphere",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": ["client", "server"],
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c green,cyan \"npm run dev --workspace shopsphere-server\" \"npm run dev --workspace shopsphere-client\"",
+    "build": "npm run build --workspace shopsphere-client",
+    "seed": "npm run seed --workspace shopsphere-server",
+    "start": "npm run start --workspace shopsphere-server"
+  },
+  "devDependencies": { "concurrently": "^9.1.2" }
+}
