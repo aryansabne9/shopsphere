@@ -4,7 +4,7 @@ import { connectDatabase } from './config/db.js';
 import Product from './models/Product.js';
 import User from './models/User.js';
 
-dotenv.config({ path: new URL('../../.env', import.meta.url) });
+dotenv.config({ path: new URL('../.env', import.meta.url) });
 
 const products = [
   { name: 'Field Overshirt', category: 'Outerwear', price: 88, compareAtPrice: 110, stock: 24, featured: true, description: 'A light, structured layer cut from sturdy organic cotton. Finished with utility pockets and a relaxed shoulder.', imageUrl: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=900&q=85' },

@@ -42,3 +42,7 @@ The API health check is at `http://localhost:5002/api/health`. The client and AP
 ## Notes
 
 This is a portfolio demo, not a production commerce system. Checkout does not process payment, tax, or shipping carrier integrations. The product seed uses remote demo photography; replace it with images you own or are licensed to use before public distribution. Do not use real customer or payment data.
+
+## Vercel
+
+Import this repository into Vercel with the repository root as the project root. The included `vercel.json` builds the Vite client into `public/`, rewrites browser routes to the SPA, and leaves `/api/*` on the Express app. Add `MONGODB_URI` and a strong `JWT_SECRET` in Vercel Project Settings before using account, cart, order, or admin features. To provision the admin account, run the seed command against the hosted database with `ADMIN_EMAIL` and `ADMIN_PASSWORD` set locally; never commit those secrets. Without a hosted MongoDB URI, the product demo remains visible but database-backed API features will return errors.
